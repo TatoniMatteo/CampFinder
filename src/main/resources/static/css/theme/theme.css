@@ -1,0 +1,99 @@
+@import url('typography.css');
+@import url('color.css');
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+}
+
+header {
+    background-color: var(--primary);
+    padding: 0 15px 15px 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.app-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.app-bar h1 {
+    margin: 0;
+}
+
+.logo {
+    padding: 15px;
+    width: auto;
+    height: auto;
+    max-height: 90px;
+}
+
+nav {
+    background-color: var(--background);
+    padding: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-left: 15px;
+    height: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+li {
+    margin-right: 15px;
+}
+
+.nav-link {
+    border: none !important;
+    background-color: var(--background);
+    text-decoration: none;
+    margin-top: -15px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    color: var(--text-primary);
+}
+
+.nav-link:hover {
+    background-color: var(--secondary);
+    color: white;
+    font-weight: bold;
+}
+
+.nav-link:active {
+    background-color: var(--primary-dark);
+    color: white;
+    font-weight: bold;
+}
+
+.nav-link,
+.nav-link:visited {
+    color: var(--text-primary);
+}
+
+.nav-link.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+main {
+    padding: 0 15px;
+    flex: 1;
+}
+
+footer {
+    background-color: var(--primary-dark);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}

@@ -1,0 +1,32 @@
+.error-container {
+    text-align: center;
+    margin: 100px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: var(--primary-dark);
+    /* Dark Green */
+    color: #fff;
+    /* Testo bianco su sfondo verde scuro */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.error-container h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.error-container p {
+    margin: 15px 0;
+    font-size: 1.2em;
+}
+
+.error-container img {
+    max-width: 60%;
+    height: auto;
+    margin: 15px 0;
+}
+
+.error-container a {
+    color: var(--secondary);
+}

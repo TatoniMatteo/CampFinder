@@ -1,0 +1,25 @@
+<header>
+    <div class="app-bar">
+        <img class="logo" th:src="@{/image/logo.png}" alt="logo">
+        <div>
+            <h1>CampFinder</h1>
+            <h3>Trova il posto ideale per il tuo campo!</h3>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a th:href="@{/}" class="nav-link" id="home-btn">Home</a>
+            </li>
+            <li>
+                <a th:href="@{/search}" class="nav-link" id="cerca-btn">Cerca</a>
+            </li>
+            <li>
+                <a th:href="@{/add}" class="nav-link" id="new-place-btn">Aggiungi Posto</a>
+            </li>
+            <li>
+                <a th:href="@{/info}" class="nav-link" id="info-btn">Info</a>
+            </li>
+        </ul>
+    </nav>
+</header>

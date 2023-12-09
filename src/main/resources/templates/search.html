@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <!-- Basic need -->
+    <meta charset="UTF-8">
+    <meta name="description"
+          content="Trova il posto campo perfetto per te. Leggi le esperienze di altri scout, consulta le foto e trova i recapiti dei posti che più ti piacciono!">
+    <meta name="keywords" content="camp, scout, campo, esperienze, posti">
+
+    <!-- Mobile specific meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS files -->
+    <link rel="stylesheet" th:href="@{/css/theme/theme.css}">
+    <link rel="stylesheet" th:href="@{/css/search.css}">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title>CampFinder - Ricerca</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main>
+    <div class="page">
+        <h1 class="text-center">Lista dei Posti</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Cerca per nome...">
+            <button class="button searchButton" id="search" onclick="search()"><i class="fas fa-search"></i>
+                Cerca
+            </button>
+            <button class="button searchFilter" id="tentFilter" onclick="tentFilter()"><i
+                    class="fa-solid fa-tent"></i></button>
+            <button class="button searchFilter" id="bedFilter" onclick="bedFilter()"><i class="fas fa-bed"></i></button>
+        </div>
+        <ul class="places-list">
+            <!-- Posto 1 -->
+            <li class="place">
+                <div class="place-info">
+                    <h2>Nome del Posto 1</h2>
+                    <p>Indirizzo del Posto 1</p>
+                    <div class="rating">
+                        <span class="fas fa-star"></span>
+                        <span class="fas fa-star"></span>
+                        <span class="fas fa-star"></span>
+                        <span class="far fa-star"></span>
+                        <span class="far fa-star"></span>
+                    </div>
+                    <p class="last-update">Ultimo aggiornamento: 01/01/2023</p>
+                </div>
+                <div class="place-image">
+                    <!-- Inserisci qui il codice per la foto -->
+                    <img src="../../image/foto1.jpeg" alt="Immagine del Posto 1">
+                </div>
+            </li>
+
+            <!-- Posto 2 -->
+            <li class="place">
+                <div class="place-info">
+                    <h2>Nome del Posto 2</h2>
+                    <p>Indirizzo del Posto 2</p>
+                    <div class="rating">
+                        <span class="fas fa-star"></span>
+                        <span class="fas fa-star"></span>
+                        <span class="fas fa-star"></span>
+                        <span class="fas fa-star"></span>
+                        <span class="far fa-star"></span>
+                    </div>
+                    <p class="last-update">Ultimo aggiornamento: 01/02/2023</p>
+                </div>
+                <div class="place-image">
+                    <!-- Inserisci qui il codice per la foto -->
+                    <img src="../../image/foto2.jpeg" alt="Immagine del Posto 2">
+                </div>
+            </li>
+        </ul>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+</body>
+</html>

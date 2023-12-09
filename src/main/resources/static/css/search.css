@@ -1,0 +1,96 @@
+.places-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+}
+
+.place {
+    max-width: 400px !important;
+    min-width: 250px !important;
+    border: 1px solid var(--text-secondary);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: var(--background);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.place-info {
+    padding: 15px 15px 5px;
+}
+
+.place:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+.place-info h2 {
+    margin: 0;
+}
+
+.place-info p {
+    color: var(--text-primary);
+}
+
+.rating {
+    color: var(--primary);
+}
+
+.rating .fas,
+.rating .far {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.place-image img {
+    width: 100%;
+    height: auto;
+}
+
+.last-update {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.search-bar {
+    text-align: center;
+    margin: auto;
+    max-width: 70%;
+    margin-bottom: 50px;
+}
+
+#searchInput {
+    padding: 10px;
+    min-width: 40%;
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+}
+
+.button {
+    height: 38px;
+    padding: 10px;
+    border: 2px solid var(--primary);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: var(--secondary) !important;
+    color: white !important;
+    border-color: var(--secondary) !important;
+}
+
+.searchButton {
+    background-color: var(--primary);
+    color: white;
+}
+
+.searchFilter {
+    width: 38px;
+    color: var(--text-primary);
+}
