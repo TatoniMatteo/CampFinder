@@ -55,11 +55,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -78,5 +73,43 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <active-profiles>test</active-profiles>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <defaultGoal>clean initialize spring-boot:run</defaultGoal>
+            </build>
+        </profile>
+        <!--
+        <profile>
+            <id>prod</id>
+            <properties>
+                <active-profiles>production</active-profiles>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>8.0.33</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <defaultGoal>clean install spring-boot:run</defaultGoal>
+            </build>
+        </profile>
+        -->
+    </profiles>
 
 </project>

@@ -1,17 +1,41 @@
+# Configurazioni comuni a tutti i profili
 spring:
+  jpa:
+    defer-datasource-initialization: true
+    open-in-view: true
+
+  profiles:
+    active: @active-profiles@
+  main:
+    banner-mode: "off"
+
+# Profilo Test
+---
+spring:
+  config:
+    activate:
+      on-profile: test
   datasource:
     url: jdbc:h2:mem:test
     driverClassName: org.h2.Driver
     username: admin
     password: password
-
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    defer-datasource-initialization: true
-
   h2:
     console:
       enabled: true
       path: /console
       settings.trace: false
       settings.web-allow-others: false
+
+
+# Profilo Produzione
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: production
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/tuo_database
+#    driverClassName: com.mysql.jdbc.Driver
+#    username: tuo_username
+#    password: tua_password
