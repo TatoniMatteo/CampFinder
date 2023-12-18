@@ -7,30 +7,27 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import java.util.List;
+
+@Table(name = "contacts")
 @Entity
-@Table(name = "users")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class User {
+public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
-    private String lastName;
     @Enumerated(EnumType.STRING)
-    private Gender gender;
-    private String email;
-    @Column(name = "scout_group")
-    private String group;
-    private String password;
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    private ContactType type;
+    @Column(name = "contact")
+    private String value;
+    private String note;
+
+    @ManyToMany(mappedBy = "contacts")
+    private List<Place> places;
 }
