@@ -31,8 +31,8 @@ Per avviare un'instanza locale del progetto segui questi passi:
     ```
 
 Apri il tuo browser e vai a [http://localhost:8080](http://localhost:8080).
-Se desidere avere accesso alla console di H2 per interagire con il Database
-vai [http://localhost:8080/console](http://localhost:8080/console).
+Se desideri avere accesso alla console di H2 per interagire con il Database
+vai a [http://localhost:8080/console](http://localhost:8080/console).
 
 ## Segnalazione Bug
 
