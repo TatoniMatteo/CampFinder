@@ -14,6 +14,7 @@
     <!-- CSS files -->
     <link rel="stylesheet" th:href="@{/css/theme/theme.css}">
     <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/place.css}">
 
     <!-- Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -53,19 +54,48 @@
     <section class="site-purpose">
         <h2>Scopo e Spirito del Sito</h2>
         <div class="site-purpose-content">
-            <img th:src="@{/image/home1.png}" alt="">
-            <p class="text-center">CampFinder è nato con l'obiettivo di connettere gli appassionati di escursionismo e
-                avventura. Il nostro
-                spirito è quello di condividere esperienze e rendere accessibili luoghi speciali che spesso non sono
-                conosciuti. La community di CampInfoExplorer è aperta, accogliente e appassionata. Unisciti a noi per
-                esplorare il mondo e condividere le tue scoperte!</p>
+            <img id="scope-img" th:src="@{/image/site/home1.png}" alt="">
+            <p class="text-center big-p">
+                CampFinder è stato creato per <strong>semplificare</strong> la vita dei capi scout come te e me. Trovare
+                il <strong>luogo ideale</strong> per i campi può essere un compito <strong>arduo</strong>: a volte non
+                si sa nemmeno da dove iniziare, e quando sia ha l'impressione di aver trovato qualcosa di adatto,
+                <strong>i costi</strong> o <strong>imprevisti spiacevoli</strong> possono rovinare tutto. La soluzione
+                migliore a questo problema è avvalersi dei <strong>preziosi consigli</strong> ed
+                <strong>esperienze</strong> dei nostri fratelli scout. Da questa riflessione nasce CampFinder. <strong>Scopri
+                nuovi posti</strong> e ascolta le <strong>esperienze</strong> degli altri capi scout. Utilizzando
+                CampFinder, scoprirai posti nuovi, eviterai <strong>brutte sorprese</strong> e avrai una chiara visione
+                di cosa aspettarti. Ma ricorda, non dimenticare di <strong>condividere la tua esperienza</strong>.
+                Contribuirà ad <strong>arricchire</strong> il sito e sarà di grande valore per molti altri capi scout!
+            </p>
         </div>
     </section>
 
     <section class="featured-places">
         <h2>Posti in Evidenza</h2>
-        <!-- Inserisci qui la lista dei posti con le recensioni più alte -->
-        <!-- Usa il tuo markup e stile già creati per la visualizzazione dei posti -->
+        <ul class="places-list">
+            <li th:each="place : ${places}" class="place">
+                <div class="place-info">
+                    <h2 th:text="${place.getName()}"></h2>
+                    <p th:text="${place.getAddress()}"></p>
+                    <div class="rating">
+                        <span th:each="i : ${#numbers.sequence(1, place.getAverageRating(), 1)}"
+                              class="fas fa-star"></span>
+                        <span th:if="${place.getAverageRating() % 1 != 0}" class="fas fa-star-half-alt"></span>
+                        <span th:each="i : ${#numbers.sequence((place.getAverageRating() % 1 != 0 ? (place.getAverageRating() + 2) : place.getAverageRating() + 1), 5, 1)}"
+                              class="far fa-star"></span>
+                    </div>
+                    <p class="last-update">Ultimo aggiornamento: <span
+                            th:text="${place.getLastUpdate()}"></span></p>
+                </div>
+                <div class="place-image" th:with="lastImage=${place.getLastImage()}">
+                    <img th:if="${lastImage != null}" th:src="${lastImage}"
+                         th:alt="'Immagine di ' + ${place.getName()}">
+                    <div th:if="${lastImage == null}" class="placeholder">
+                        <i class="fas fa-image fa-2xl"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </section>
 </main>
 
