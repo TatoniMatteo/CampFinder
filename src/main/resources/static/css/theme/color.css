@@ -5,4 +5,17 @@
     --background: #EDFDF7ff;
     --text-primary: #212121;
     --text-secondary: #757575;
+    --on-primary: #FFF;
+
+
+
+    --bs-primary: var(--primary);
+    --bs-primary-dark: var(--primary-dark);
+    --bs-secondary: var(--secondary);
+    --bs-success: #28a745;  /* Sostituisci con il tuo colore success */
+    --bs-info: #17a2b8;  /* Sostituisci con il tuo colore info */
+    --bs-warning: #ffc107;  /* Sostituisci con il tuo colore warning */
+    --bs-danger: #dc3545;  /* Sostituisci con il tuo colore danger */
+    --bs-light: #f8f9fa;  /* Sostituisci con il tuo colore light */
+    --bs-dark: #343a40;  /* Sostituisci con il tuo colore dark */
 }
