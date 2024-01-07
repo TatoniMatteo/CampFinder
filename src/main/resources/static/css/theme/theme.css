@@ -82,8 +82,70 @@ main {
 }
 
 footer {
-    background-color: var(--primary-dark);
+    background-color: var(--primary);
     color: white;
     padding: 10px;
     text-align: center;
+}
+
+/* scroll-to-top.css */
+
+.scroll-to-top {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-to-top:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+
+/*RESPONSIVE LAYOUT*/
+
+@media only screen and (max-width: 600px) {
+    header {
+        padding: 0 10px 10px 10px;
+    }
+
+    .title {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .app-bar {
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav {
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    nav ul {
+        height: 55px;
+    }
+
+    nav ul li {
+        margin: auto 10px auto 0;
+        display: inline-flex;
+        text-align: center;
+    }
 }
