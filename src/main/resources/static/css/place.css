@@ -4,12 +4,13 @@
     flex-direction: row;
     list-style-type: none;
     padding: 0;
+    gap: 15px;
 }
 
 .place {
-    max-width: 400px !important;
-    min-width: 250px !important;
-    height: 420px;
+    max-width: 350px !important;
+    min-width: 300px !important;
+    height: auto;
     border: 1px solid var(--text-secondary);
     border-radius: 8px;
     margin-bottom: 20px;
@@ -29,8 +30,10 @@
     transform: scale(1.02);
 }
 
-.place-info h2 {
+.place-info h3 {
     margin: 0;
+    color: var(--primary-dark);
+    text-align: start;
 }
 
 .place-info p {
@@ -66,4 +69,15 @@
 .last-update {
     color: var(--text-secondary);
     font-size: 14px;
+}
+
+.wrap-link {
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .places-list {
+        justify-content: center;
+        align-items: center;
+    }
 }
