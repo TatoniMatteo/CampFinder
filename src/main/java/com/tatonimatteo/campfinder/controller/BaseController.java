@@ -21,6 +21,7 @@ public class BaseController {
 
     @GetMapping("/search")
     public String search(Model model) {
+        model.addAttribute("places", placeService.getTopPlaces(10));
         return "search";
     }
 

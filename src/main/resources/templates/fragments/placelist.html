@@ -1,0 +1,26 @@
+<ul th:fragment="places-list" class="places-list">
+    <li th:each="place : ${places}" class="place">
+        <a th:href="@{'/placedetails?id=' + ${place.id}}" class="wrap-link">
+            <div class="place-info">
+                <h3 th:text="${place.getName()}"></h3>
+                <p th:text="${place.getAddress()}"></p>
+                <div class="rating">
+                        <span th:each="i : ${#numbers.sequence(1, place.getAverageRating(), 1)}"
+                              class="fas fa-star"></span>
+                    <span th:if="${place.getAverageRating() % 1 != 0}" class="fas fa-star-half-alt"></span>
+                    <span th:each="i : ${#numbers.sequence((place.getAverageRating() % 1 != 0 ? (place.getAverageRating() + 2) : place.getAverageRating() + 1), 5, 1)}"
+                          class="far fa-star"></span>
+                </div>
+                <p class="last-update">Ultimo aggiornamento: <span
+                        th:text="${place.getLastUpdate()}"></span></p>
+            </div>
+            <div class="place-image" th:with="lastImage=${place.getLastImage()}">
+                <img th:if="${lastImage != null}" th:src="${lastImage}"
+                     th:alt="'Immagine di ' + ${place.getName()}">
+                <div th:if="${lastImage == null}" class="placeholder">
+                    <i class="fas fa-image fa-2xl"></i>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>

@@ -37,45 +37,7 @@
                     class="fa-solid fa-tent"></i></button>
             <button class="button searchFilter" id="bedFilter" onclick="bedFilter()"><i class="fas fa-bed"></i></button>
         </div>
-        <ul class="places-list">
-            <!-- Posto 1 -->
-            <li class="place">
-                <div class="place-info">
-                    <h2>Nome del Posto 1</h2>
-                    <p>Indirizzo del Posto 1</p>
-                    <div class="rating">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="far fa-star"></span>
-                        <span class="far fa-star"></span>
-                    </div>
-                    <p class="last-update">Ultimo aggiornamento: 01/01/2023</p>
-                </div>
-                <div class="place-image">
-                    <img th:src="@{/image/site/foto1.jpeg}" alt="Immagine del Posto 1">
-                </div>
-            </li>
-
-            <!-- Posto 2 -->
-            <li class="place">
-                <div class="place-info">
-                    <h2>Nome del Posto 2</h2>
-                    <p>Indirizzo del Posto 2</p>
-                    <div class="rating">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="far fa-star"></span>
-                    </div>
-                    <p class="last-update">Ultimo aggiornamento: 01/02/2023</p>
-                </div>
-                <div class="place-image">
-                    <img th:src="@{/image/site/foto2.jpeg}" alt="Immagine del Posto 2">
-                </div>
-            </li>
-        </ul>
+        <ul th:replace="~{fragments/placelist :: places-list}"></ul>
     </div>
 </main>
 
