@@ -75,3 +75,23 @@ section h2 {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/*RESPONSIVE LAYOUT*/
+
+@media only screen and (max-width: 600px) {
+    .how-it-works ul {
+        flex-direction: column;
+    }
+
+    .site-purpose-content {
+        flex-direction: column;
+    }
+
+    .site-purpose-content img {
+        width: 100%;
+    }
+
+    section h2 {
+        text-align: center;
+    }
+}
