@@ -19,4 +19,8 @@ public class PlaceService {
         Pageable pageable = PageRequest.of(0, numberOfResults);
         return repository.findTopPlace(pageable);
     }
+
+    public Place getPlaceById(long id) {
+        return repository.findById(id).orElse(null);
+    }
 }

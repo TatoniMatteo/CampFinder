@@ -18,5 +18,4 @@ public interface PlaceRepository extends JpaRepository<Place, Long> {
             "ORDER BY AVG(r.servicesRating + r.overallRating + r.managerRating) DESC, p.lastUpdate DESC")
     List<Place> findTopPlace(Pageable pageable);
 
-
 }
