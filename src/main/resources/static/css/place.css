@@ -75,6 +75,17 @@
     text-decoration: none;
 }
 
+.category {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.category i {
+    color: var(--primary);
+}
+
 @media only screen and (max-width: 800px) {
     .places-list {
         justify-content: center;

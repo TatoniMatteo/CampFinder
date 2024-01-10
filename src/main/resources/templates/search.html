@@ -26,57 +26,22 @@
 <header th:replace="~{fragments/header :: header}"></header>
 
 <main>
-    <div class="page">
-        <h1 class="text-center">Lista dei Posti</h1>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Cerca per nome...">
-            <button class="button searchButton" id="search" onclick="search()"><i class="fas fa-search"></i>
-                Cerca
-            </button>
-            <button class="button searchFilter" id="tentFilter" onclick="tentFilter()"><i
-                    class="fa-solid fa-tent"></i></button>
-            <button class="button searchFilter" id="bedFilter" onclick="bedFilter()"><i class="fas fa-bed"></i></button>
-        </div>
-        <ul class="places-list">
-            <!-- Posto 1 -->
-            <li class="place">
-                <div class="place-info">
-                    <h2>Nome del Posto 1</h2>
-                    <p>Indirizzo del Posto 1</p>
-                    <div class="rating">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="far fa-star"></span>
-                        <span class="far fa-star"></span>
-                    </div>
-                    <p class="last-update">Ultimo aggiornamento: 01/01/2023</p>
-                </div>
-                <div class="place-image">
-                    <img th:src="@{/image/site/foto1.jpeg}" alt="Immagine del Posto 1">
-                </div>
-            </li>
-
-            <!-- Posto 2 -->
-            <li class="place">
-                <div class="place-info">
-                    <h2>Nome del Posto 2</h2>
-                    <p>Indirizzo del Posto 2</p>
-                    <div class="rating">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="far fa-star"></span>
-                    </div>
-                    <p class="last-update">Ultimo aggiornamento: 01/02/2023</p>
-                </div>
-                <div class="place-image">
-                    <img th:src="@{/image/site/foto2.jpeg}" alt="Immagine del Posto 2">
-                </div>
-            </li>
-        </ul>
-    </div>
+    <h1 class="text-center">Lista dei Posti</h1>
+    <form action="/search" method="get" class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cerca per nome..." name="query" th:value="${query}">
+        <button type="submit" class="button searchButton" id="search">
+            <i class="fas fa-search"></i>Cerca
+        </button>
+        <input type="checkbox" class="search-checkbox" name="tent" id="tentFilter" th:checked="${tent}">
+        <label class="checkbox-label button" for="tentFilter">
+            <i class="fa-solid fa-tent"></i>
+        </label>
+        <input type="checkbox" class="search-checkbox" name="bed" id="bedFilter" th:checked="${bed}">
+        <label class="checkbox-label button" for="bedFilter">
+            <i class="fas fa-bed"></i>
+        </label>
+    </form>
+    <ul th:replace="~{fragments/placelist :: places-list}"></ul>
 </main>
 
 <footer th:replace="~{fragments/footer :: footer}"></footer>
