@@ -26,19 +26,17 @@
 <header th:replace="~{fragments/header :: header}"></header>
 
 <main>
-    <div class="page">
-        <h1 class="text-center">Lista dei Posti</h1>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Cerca per nome...">
-            <button class="button searchButton" id="search" onclick="search()"><i class="fas fa-search"></i>
-                Cerca
-            </button>
-            <button class="button searchFilter" id="tentFilter" onclick="tentFilter()"><i
-                    class="fa-solid fa-tent"></i></button>
-            <button class="button searchFilter" id="bedFilter" onclick="bedFilter()"><i class="fas fa-bed"></i></button>
-        </div>
-        <ul th:replace="~{fragments/placelist :: places-list}"></ul>
+    <h1 class="text-center">Lista dei Posti</h1>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cerca per nome...">
+        <button class="button searchButton" id="search" onclick="search()">
+            <i class="fas fa-search"></i>Cerca
+        </button>
+        <button class="button searchFilter" id="tentFilter" onclick="tentFilter()"><i
+                class="fa-solid fa-tent"></i></button>
+        <button class="button searchFilter" id="bedFilter" onclick="bedFilter()"><i class="fas fa-bed"></i></button>
     </div>
+    <ul th:replace="~{fragments/placelist :: places-list}"></ul>
 </main>
 
 <footer th:replace="~{fragments/footer :: footer}"></footer>

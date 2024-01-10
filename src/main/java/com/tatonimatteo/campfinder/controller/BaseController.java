@@ -1,27 +1,27 @@
 package com.tatonimatteo.campfinder.controller;
 
 import com.tatonimatteo.campfinder.service.PlaceService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequiredArgsConstructor
 public class BaseController {
 
-    @Autowired
-    private PlaceService placeService;
+    private final PlaceService placeService;
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("places", placeService.getTopPlaces(10));
+        model.addAttribute("places", placeService.getTopPlaces(10, 0));
         return "home";
     }
 
     @GetMapping("/search")
     public String search(Model model) {
-        model.addAttribute("places", placeService.getTopPlaces(10));
+        model.addAttribute("places", placeService.getTopPlaces(20, 0));
         return "search";
     }
 

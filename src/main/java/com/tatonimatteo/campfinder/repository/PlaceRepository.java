@@ -11,11 +11,9 @@ import java.util.List;
 @Repository
 public interface PlaceRepository extends JpaRepository<Place, Long> {
 
-    @Query("SELECT p FROM Place p " +
-            "JOIN p.reviews r " +
-            "ON p.id = r.place.id " +
+    @Query("SELECT DISTINCT p FROM Place p " +
+            "JOIN FETCH p.reviews r " +
             "GROUP BY p " +
             "ORDER BY AVG(r.servicesRating + r.overallRating + r.managerRating) DESC, p.lastUpdate DESC")
     List<Place> findTopPlace(Pageable pageable);
-
 }
