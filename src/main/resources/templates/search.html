@@ -27,15 +27,20 @@
 
 <main>
     <h1 class="text-center">Lista dei Posti</h1>
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Cerca per nome...">
-        <button class="button searchButton" id="search" onclick="search()">
+    <form action="/search" method="get" class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cerca per nome..." name="query" th:value="${query}">
+        <button type="submit" class="button searchButton" id="search">
             <i class="fas fa-search"></i>Cerca
         </button>
-        <button class="button searchFilter" id="tentFilter" onclick="tentFilter()"><i
-                class="fa-solid fa-tent"></i></button>
-        <button class="button searchFilter" id="bedFilter" onclick="bedFilter()"><i class="fas fa-bed"></i></button>
-    </div>
+        <input type="checkbox" class="search-checkbox" name="tent" id="tentFilter" th:checked="${tent}">
+        <label class="checkbox-label button" for="tentFilter">
+            <i class="fa-solid fa-tent"></i>
+        </label>
+        <input type="checkbox" class="search-checkbox" name="bed" id="bedFilter" th:checked="${bed}">
+        <label class="checkbox-label button" for="bedFilter">
+            <i class="fas fa-bed"></i>
+        </label>
+    </form>
     <ul th:replace="~{fragments/placelist :: places-list}"></ul>
 </main>
 

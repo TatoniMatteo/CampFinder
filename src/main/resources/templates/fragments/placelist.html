@@ -11,6 +11,12 @@
                     <span th:each="i : ${#numbers.sequence((place.getAverageRating() % 1 != 0 ? (place.getAverageRating() + 2) : place.getAverageRating() + 1), 5, 1)}"
                           class="far fa-star"></span>
                 </div>
+                <div class="category">
+                    <i th:if="${place.isTent()}" class="fa-solid fa-tent"></i>
+                    <i th:if="${place.isStructure()}" class="fa-solid fa-bed"></i>
+                </div>
+
+
                 <p class="last-update">Ultimo aggiornamento: <span
                         th:text="${place.getLastUpdate()}"></span></p>
             </div>

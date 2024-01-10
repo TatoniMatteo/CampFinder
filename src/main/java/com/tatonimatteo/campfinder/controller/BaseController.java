@@ -20,8 +20,14 @@ public class BaseController {
     }
 
     @GetMapping("/search")
-    public String search(Model model) {
-        model.addAttribute("places", placeService.getTopPlaces(20, 0));
+    public String search(@RequestParam(required = false, defaultValue = "") String query,
+                         @RequestParam(required = false, defaultValue = "false") boolean tent,
+                         @RequestParam(required = false, defaultValue = "false") boolean bed,
+                         Model model) {
+        model.addAttribute("query", query);
+        model.addAttribute("tent", tent);
+        model.addAttribute("bed", bed);
+        model.addAttribute("places", placeService.searchPlace(query, tent, bed, 20, 0));
         return "search";
     }
 

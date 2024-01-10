@@ -23,8 +23,25 @@ public class PlaceService {
         return repository.findTopPlace(getPageable(resultForPage, page));
     }
 
+    public List<Place> findFilteredPlaces(String query, int resultForPage, int page) {
+        return repository.findFilteredPlaces(query, getPageable(resultForPage, page));
+    }
+
+    public List<Place> searchPlace(String query, boolean tent, boolean bed, int resultForPage, int page) {
+        List<Place> result;
+        if (query.isEmpty()) result = getTopPlaces(resultForPage, page);
+        else result = findFilteredPlaces(query, resultForPage, page);
+        return filter(tent, bed, result);
+    }
+
     private Pageable getPageable(int resultForPage, int page) {
         int firstResult = resultForPage * page;
         return PageRequest.of(firstResult, firstResult + resultForPage);
+    }
+
+    private List<Place> filter(boolean tent, boolean bed, List<Place> places) {
+        return places.stream()
+                .filter(place -> (!tent || place.isTent()) && (!bed || place.isStructure()))
+                .toList();
     }
 }
