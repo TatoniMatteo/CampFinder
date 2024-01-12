@@ -24,7 +24,7 @@ public class PlaceService {
     }
 
     public List<Place> findFilteredPlaces(String query, int resultForPage, int page) {
-        return repository.findFilteredPlaces(query, getPageable(resultForPage, page));
+        return repository.findAllByNameContainingIgnoreCaseOrAddressContainingIgnoreCase(query, query, getPageable(resultForPage, page));
     }
 
     public List<Place> searchPlace(String query, boolean tent, boolean bed, int resultForPage, int page) {
@@ -44,4 +44,9 @@ public class PlaceService {
                 .filter(place -> (!tent || place.isTent()) && (!bed || place.isStructure()))
                 .toList();
     }
+
+    public Integer getSearchPlacePageNumber(String query, int itemForPage) {
+        return (int) Math.ceil((double) repository.countByNameContainingIgnoreCaseOrAddressContainingIgnoreCase(query, query) / itemForPage);
+    }
+
 }

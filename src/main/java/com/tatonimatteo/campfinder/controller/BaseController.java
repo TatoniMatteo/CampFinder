@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BaseController {
 
     private final PlaceService placeService;
+    private static final int ITEM_FOR_PAGE = 20;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -29,8 +30,8 @@ public class BaseController {
         model.addAttribute("tent", tent);
         model.addAttribute("bed", bed);
         model.addAttribute("page", page);
-        model.addAttribute("places", placeService.searchPlace(query, tent, bed, 20, 0));
-        model.addAttribute("pages", 5);
+        model.addAttribute("places", placeService.searchPlace(query, tent, bed, ITEM_FOR_PAGE, page));
+        model.addAttribute("pages", placeService.getSearchPlacePageNumber(query, ITEM_FOR_PAGE));
         return "search";
     }
 
