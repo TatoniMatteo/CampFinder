@@ -13,16 +13,29 @@ import java.util.List;
 public interface PlaceRepository extends JpaRepository<Place, Long> {
 
     @Query("SELECT DISTINCT p FROM Place p " +
-            "JOIN FETCH p.reviews r " +
+            "LEFT JOIN FETCH p.reviews r " +
             "GROUP BY p " +
-            "ORDER BY AVG(r.servicesRating + r.overallRating + r.managerRating) DESC, p.lastUpdate DESC")
-    List<Place> findTopPlace(Pageable pageable);
+            "ORDER BY COALESCE(AVG(r.servicesRating + r.overallRating + r.managerRating), 0) DESC, p.lastUpdate DESC")
+    List<Place> findTopPlacePaged(Pageable pageable);
 
     @Query("SELECT DISTINCT p FROM Place p " +
-            "JOIN FETCH p.reviews r " +
-            "WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR " +
-            "LOWER(p.address) LIKE LOWER(CONCAT('%', :searchTerm, '%')) " +
+            "LEFT JOIN FETCH p.reviews r " +
+            "WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(p.address) LIKE LOWER(CONCAT('%', :query, '%')) " +
             "GROUP BY p " +
-            "ORDER BY AVG(r.servicesRating + r.overallRating + r.managerRating) DESC, p.lastUpdate DESC")
-    List<Place> findFilteredPlaces(@Param("searchTerm") String searchTerm, Pageable pageable);
+            "ORDER BY COALESCE(AVG(r.servicesRating + r.overallRating + r.managerRating), 0) DESC, p.lastUpdate DESC")
+    List<Place> findSearchPaged(@Param("query") String query, Pageable pageable);
+
+    @Query("SELECT DISTINCT p FROM Place p " +
+            "LEFT JOIN FETCH p.reviews r " +
+            "GROUP BY p " +
+            "ORDER BY COALESCE(AVG(r.servicesRating + r.overallRating + r.managerRating), 0) DESC, p.lastUpdate DESC")
+    List<Place> findTopPlace();
+
+    @Query("SELECT DISTINCT p FROM Place p " +
+            "LEFT JOIN FETCH p.reviews r " +
+            "WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(p.address) LIKE LOWER(CONCAT('%', :query, '%')) " +
+            "GROUP BY p " +
+            "ORDER BY COALESCE(AVG(r.servicesRating + r.overallRating + r.managerRating), 0) DESC, p.lastUpdate DESC")
+    List<Place> findSearch(@Param("query") String query);
+
 }
