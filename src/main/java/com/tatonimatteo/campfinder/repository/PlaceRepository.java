@@ -4,6 +4,7 @@ import com.tatonimatteo.campfinder.entity.Place;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,13 +13,29 @@ import java.util.List;
 public interface PlaceRepository extends JpaRepository<Place, Long> {
 
     @Query("SELECT DISTINCT p FROM Place p " +
-            "JOIN FETCH p.reviews r " +
+            "LEFT JOIN FETCH p.reviews r " +
             "GROUP BY p " +
-            "ORDER BY AVG(r.servicesRating + r.overallRating + r.managerRating) DESC, p.lastUpdate DESC")
-    List<Place> findTopPlace(Pageable pageable);
+            "ORDER BY COALESCE(AVG(r.servicesRating + r.overallRating + r.managerRating), 0) DESC, p.lastUpdate DESC")
+    List<Place> findTopPlacePaged(Pageable pageable);
 
-    List<Place> findAllByNameContainingIgnoreCaseOrAddressContainingIgnoreCase(
-            String name, String address, Pageable pageable);
+    @Query("SELECT DISTINCT p FROM Place p " +
+            "LEFT JOIN FETCH p.reviews r " +
+            "WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(p.address) LIKE LOWER(CONCAT('%', :query, '%')) " +
+            "GROUP BY p " +
+            "ORDER BY COALESCE(AVG(r.servicesRating + r.overallRating + r.managerRating), 0) DESC, p.lastUpdate DESC")
+    List<Place> findSearchPaged(@Param("query") String query, Pageable pageable);
 
-    long countByNameContainingIgnoreCaseOrAddressContainingIgnoreCase(String name, String address);
+    @Query("SELECT DISTINCT p FROM Place p " +
+            "LEFT JOIN FETCH p.reviews r " +
+            "GROUP BY p " +
+            "ORDER BY COALESCE(AVG(r.servicesRating + r.overallRating + r.managerRating), 0) DESC, p.lastUpdate DESC")
+    List<Place> findTopPlace();
+
+    @Query("SELECT DISTINCT p FROM Place p " +
+            "LEFT JOIN FETCH p.reviews r " +
+            "WHERE LOWER(p.name) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(p.address) LIKE LOWER(CONCAT('%', :query, '%')) " +
+            "GROUP BY p " +
+            "ORDER BY COALESCE(AVG(r.servicesRating + r.overallRating + r.managerRating), 0) DESC, p.lastUpdate DESC")
+    List<Place> findSearch(@Param("query") String query);
+
 }

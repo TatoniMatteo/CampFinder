@@ -92,4 +92,14 @@
 .page-selector .bubble.selected {
     height: 50px !important;
     width: 50px !important;
+    pointer-events: none;
+    border-width: 3px;
+}
+
+.page-selector .bubble.selected span {
+    font-weight: bold;
+}
+
+.page-selector .bubble.empty {
+    background-color: var(--primary-dark);
 }

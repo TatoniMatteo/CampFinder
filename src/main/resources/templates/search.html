@@ -8,6 +8,9 @@
           content="Trova il posto campo perfetto per te. Leggi le esperienze di altri scout, consulta le foto e trova i recapiti dei posti che più ti piacciono!">
     <meta name="keywords" content="camp, scout, campo, esperienze, posti">
 
+    <!-- Icon -->
+    <link rel="icon" th:href="@{/image/site/logo-mini.png}">
+
     <!-- Mobile specific meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,12 +29,9 @@
 <header th:replace="~{fragments/header :: header}"></header>
 
 <main>
-    <h1 class="text-center">Lista dei Posti</h1>
+    <h1 class="text-center">Cerca il posto migliore per te</h1>
     <form action="/search" method="get" class="search-bar">
         <input type="text" id="searchInput" placeholder="Cerca per nome..." name="query" th:value="${query}">
-        <button type="submit" class="button searchButton" id="search">
-            <i class="fas fa-search"></i>Cerca
-        </button>
         <input type="checkbox" class="search-checkbox" name="tent" id="tentFilter" th:checked="${tent}">
         <label class="checkbox-label button" for="tentFilter">
             <i class="fa-solid fa-tent"></i>
@@ -40,6 +40,9 @@
         <label class="checkbox-label button" for="bedFilter">
             <i class="fas fa-bed"></i>
         </label>
+        <button type="submit" class="button searchButton" id="search">
+            <i class="fas fa-search"></i>Cerca
+        </button>
     </form>
     <ul th:replace="~{fragments/placelist :: places-list}"></ul>
     <div class="page-selector">
@@ -48,8 +51,8 @@
             <i class="fa-solid fa-chevron-left"></i>
         </a>
 
-        <a th:each="pageNumber : ${#numbers.sequence(page - 1, page + 1)}"
-           th:class="${pageNumber == page ? 'bubble selected' : 'bubble'}"
+        <a th:each="pageNumber : ${#numbers.sequence(page - 2, page + 2)}"
+           th:class="'bubble ' + ${pageNumber == page ? 'selected' : ''} + ' ' + ${pageNumber <= 0 or pageNumber > pages ? 'disabled empty' : ''}"
            th:href="@{${'/search?query=' + query + '&tent=' + tent + '&bed=' + bed + '&page=' + pageNumber}}">
             <span th:if="${pageNumber > 0 and pageNumber <= pages}" th:text="${pageNumber}"></span>
         </a>

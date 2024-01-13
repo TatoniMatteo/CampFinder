@@ -30,8 +30,8 @@ public class BaseController {
         model.addAttribute("tent", tent);
         model.addAttribute("bed", bed);
         model.addAttribute("page", page);
-        model.addAttribute("places", placeService.searchPlace(query, tent, bed, ITEM_FOR_PAGE, page));
-        model.addAttribute("pages", placeService.getSearchPlacePageNumber(query, ITEM_FOR_PAGE));
+        model.addAttribute("places", placeService.searchPlace(query, tent, bed, ITEM_FOR_PAGE, page - 1));
+        model.addAttribute("pages", placeService.getSearchPlacePageNumber(query, tent, bed, ITEM_FOR_PAGE));
         return "search";
     }
 
