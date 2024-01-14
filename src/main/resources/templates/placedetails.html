@@ -26,14 +26,63 @@
 </head>
 
 <body>
-
 <header th:replace="~{fragments/header :: header}"></header>
+<main class="place-details">
+    <h1 th:text="${place.getName()}"></h1>
+    <div class="info-bar">
+        <div class="rating">
+        <span th:each="i : ${#numbers.sequence(1, place.getAverageRating(), 1)}"
+              class="fas fa-star"></span>
+            <span th:if="${place.getAverageRating() % 1 != 0}" class="fas fa-star-half-alt"></span>
+            <span th:each="i : ${#numbers.sequence((place.getAverageRating() % 1 != 0 ? (place.getAverageRating() + 2) : place.getAverageRating() + 1), 5, 1)}"
+                  class="far fa-star"></span>
+        </div>
+        <div class="badges">
+            <i th:if="${place.isTent()}" class="fas fa-tent"></i>
+            <i th:if="${place.isStructure()}" class="fas fa-bed"></i>
+        </div>
+    </div>
+    <div class="container">
+        <div class="info">
+            <h3><i class="fas fa-circle-info"></i>INFORMAZIONI</h3>
 
-<main>
+            <div class="element">
+                <label> <i class="fa-solid fa-location-dot"></i>Indirizzo:</label>
+                <p th:text="${place.getAddress()}"></p>
+            </div>
+            <div class="element">
+                <label><i class="fa-solid fa-user-tie"></i>Gestore:</label>
+                <p th:text="${place.getManagerName()}"></p>
+            </div>
+            <div class="element contact-list">
+                <label><i class="fa-solid fa-address-book"></i>Contatti:</label>
+                <ul>
+                    <li th:each="contact : ${place.getContacts()}">
+                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).EMAIL}" class="fas fa-envelope"></i>
+                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).PHONE}" class="fas fa-phone"></i>
+                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).OTHER}" class="fas fa-hashtag"></i>
+                        <span th:text="${contact.getValue()}"></span>
+                        <span th:if="${!contact.getNote().isBlank()}"
+                              th:text="${'[ ' + contact.getNote() + ' ]'}"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="element">
+                <label><i class="fa-solid fa-hand-holding-dollar"></i>Prezzo:</label>
+                <p th:text="${place.getPrice()}"></p>
+            </div>
+            <div class="element">
+                <label><i class="fa-solid fa-pen"></i>Note:</label>
+                <p th:text="${place.getNote()}"></p>
+            </div>
+        </div>
+        <div class="image-container">
+            <label>Ultima Immagine:</label>
+            <img th:src="${place.getLastImage()}" alt="Ultima Immagine">
+        </div>
+    </div>
 </main>
-
 <footer th:replace="~{fragments/footer :: footer}"></footer>
-
 </body>
-
 </html>

@@ -33,6 +33,12 @@ header {
     max-height: 90px;
 }
 
+header .header-container {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 header nav {
     background-color: var(--background);
     padding: 8px 12px;
@@ -80,13 +86,23 @@ header.nav-link:active {
 }
 
 main {
-    padding: 0 15px;
+    padding: 10px 15px;
     flex: 1;
+    max-width: 1500px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 footer {
     background-color: var(--primary);
     color: white;
+}
+
+
+footer .footer-container {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
     padding: 10px;
     text-align: center;
 }
@@ -115,7 +131,6 @@ footer {
     background-color: var(--primary-dark);
     color: white;
 }
-
 
 /*RESPONSIVE LAYOUT*/
 

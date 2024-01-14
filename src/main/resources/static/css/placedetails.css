@@ -1,0 +1,87 @@
+.place-details {
+    h1 {
+        margin-bottom: 0;
+    }
+
+    .info-bar {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+        padding: 10px 0 30px 0;
+    }
+
+    .info-bar i {
+        font-size: 15px;
+    }
+
+    .rating {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+
+    .badges {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        color: var(--primary-dark);
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+
+        .info {
+            min-width: 40%;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info h3 {
+            margin: 0;
+            text-decoration: underline;
+        }
+
+        .info h3 i {
+            margin-right: 5px;
+        }
+
+        .info .element {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .info .element label {
+            display: flex;
+            flex-direction: row;
+            gap: 2px;
+        }
+
+        .info .element label {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .info .element p {
+            margin: 0;
+        }
+
+        .info .element i {
+            margin-right: 5px;
+        }
+
+        .info .element.contact-list ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+    }
+}
