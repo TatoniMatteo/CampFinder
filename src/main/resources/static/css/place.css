@@ -8,9 +8,7 @@
 }
 
 .place {
-    max-width: 350px !important;
-    min-width: 300px !important;
-    height: auto;
+    width: 350px !important;
     border: 1px solid var(--text-secondary);
     border-radius: 8px;
     margin-bottom: 20px;
@@ -51,7 +49,7 @@
 }
 
 .place-image img {
-    width: 100%;
+    width: 350px;
     height: 250px;
     object-fit: cover;
 }
