@@ -35,8 +35,10 @@ header {
 
 header .header-container {
     max-width: 1500px;
-    width: 100%;
     margin: 0 auto;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
 }
 
 header nav {
@@ -90,7 +92,9 @@ main {
     flex: 1;
     max-width: 1500px;
     margin: 0 auto;
-    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
 }
 
 footer {
@@ -101,10 +105,12 @@ footer {
 
 footer .footer-container {
     max-width: 1500px;
-    width: 100%;
     margin: 0 auto;
     padding: 10px;
     text-align: center;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
 }
 
 /* scroll-to-top.css */
