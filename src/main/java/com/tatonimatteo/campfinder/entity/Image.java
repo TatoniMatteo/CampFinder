@@ -17,12 +17,8 @@ import java.time.LocalDate;
 @Data
 public class Image {
 
-    public Image() {
-        this.creation = LocalDate.now();
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Lob
@@ -35,5 +31,9 @@ public class Image {
     @PrePersist
     public void prePersist() {
         this.creation = (this.creation != null) ? this.creation : LocalDate.now();
+    }
+
+    public Image() {
+        this.creation = LocalDate.now();
     }
 }

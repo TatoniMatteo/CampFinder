@@ -58,9 +58,12 @@
                 <label><i class="fa-solid fa-address-book"></i>Contatti:</label>
                 <ul>
                     <li th:each="contact : ${place.getContacts()}">
-                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).EMAIL}" class="fas fa-envelope"></i>
-                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).PHONE}" class="fas fa-phone"></i>
-                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).OTHER}" class="fas fa-hashtag"></i>
+                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).EMAIL}"
+                           class="fas fa-envelope"></i>
+                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).PHONE}"
+                           class="fas fa-phone"></i>
+                        <i th:if="${contact.getType() == T(com.tatonimatteo.campfinder.entity.ContactType).OTHER}"
+                           class="fas fa-hashtag"></i>
                         <span th:text="${contact.getValue()}"></span>
                         <span th:if="${!contact.getNote().isBlank()}"
                               th:text="${'[ ' + contact.getNote() + ' ]'}"></span>
@@ -78,8 +81,7 @@
             </div>
         </div>
         <div class="image-container">
-            <label>Ultima Immagine:</label>
-            <img th:src="${place.getLastImage()}" alt="Ultima Immagine">
+            <img th:each="image : ${place.getImages()}" th:src="${image.getPath()}" alt="">
         </div>
     </div>
 </main>
