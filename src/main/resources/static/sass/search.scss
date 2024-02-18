@@ -1,7 +1,5 @@
-/*
-$primary: #86A697
-$secondary: #F2D7B6
- */
+@import "theme/variables";
+
 .search-bar {
   height: 45px;
   display: flex;
@@ -15,7 +13,7 @@ $secondary: #F2D7B6
 #searchInput {
   padding: 10px;
   width: 100%;
-  border: 2px solid #034133FF;
+  border: 2px solid $primary;
   border-radius: 10px;
 }
 
@@ -26,20 +24,20 @@ $secondary: #F2D7B6
   align-items: center;
   gap: 5px;
   padding: 10px;
-  border: 2px solid #034133FF;
+  border: 2px solid $primary;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   border-radius: 10px;
 }
 
 .button:hover {
-  background-color: #8CDF83FF !important;
+  background-color: $secondary !important;
   color: white !important;
-  border-color: #8CDF83FF !important;
+  border-color: $secondary !important;
 }
 
 .searchButton {
-  background-color: #034133FF;
+  background-color: $primary;
   color: white;
 }
 
@@ -56,11 +54,11 @@ $secondary: #F2D7B6
 }
 
 .search-checkbox:checked + .checkbox-label {
-  background-color: #034133FF;
+  background-color: $primary;
 }
 
 .search-checkbox:checked + .checkbox-label i {
-  color: #FFFFFF;
+  color: $on-primary;
 }
 
 .page-selector {
@@ -82,10 +80,10 @@ $secondary: #F2D7B6
 }
 
 .page-selector .bubble {
-  color: #041F1A;
+  color: $primary-dark;
   height: 30px;
   width: 30px;
-  border: 2px solid #041F1A;
+  border: 2px solid $primary-dark;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -105,7 +103,5 @@ $secondary: #F2D7B6
 }
 
 .page-selector .bubble.empty {
-  background-color: #041F1A;
+  background-color: $primary-dark;
 }
-
-/*# sourceMappingURL=search.css.map */

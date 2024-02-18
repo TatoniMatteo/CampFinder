@@ -1,40 +1,40 @@
-<header>
-    <div class="app-bar">
-        <img class="logo" th:src="@{/image/site/logo.png}" alt="logo">
-        <div class="title">
-            <h1>CampFinder</h1>
-            <h3>Trova il posto ideale per il tuo campo!</h3>
+<header class="navbar position-fixed top-0 justify-content-center justify-content-around z-3">
+    <div class="container d-flex align-items-center position-fixed top-0 m-3">
+        <div class="col-5 row text-start" id="navbar">
+            <ul class="nav justify-content-start">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">
+                        <i class="fas fa-house"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/search}">
+                        <i class="fas fa-search"></i>
+                        <span>Cerca</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/add}">
+                        <i class="fas fa-plus"></i>
+                        <span>Aggiungi Posto</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/info}">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Info</span>
+                    </a>
+                </li>
+            </ul>
         </div>
+        <a class="col-2 text-center" th:href="@{/}">
+            <img th:src="@{/image/site/logo.png}" alt="logo" id="logo">
+        </a>
+        <div class="col-5 row text-end"></div>
     </div>
-    <nav>
-        <ul>
-            <li>
-                <a th:href="@{/}" class="nav-link" id="home-btn">
-                    <i class="fa-solid fa-house"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/search}" class="nav-link" id="cerca-btn">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <span>Cerca</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/add}" class="nav-link" id="new-place-btn">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>Aggiungi Posto</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/info}" class="nav-link" id="info-btn">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <span>Info</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <a href="#top" class="scroll-to-top" id="scroll-to-top">
+    <button type="button" class="btn btn-primary position-fixed bottom-2 end-1 scroll-to-top">
         <i class="fa-solid fa-angles-up"></i>
-    </a>
+    </button>
 </header>
+

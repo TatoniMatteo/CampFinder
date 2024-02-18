@@ -1,16 +1,14 @@
-/*
-$primary: #86A697
-$secondary: #F2D7B6
- */
+@import "theme/variables";
+
 .error-container {
   text-align: center;
   margin: 100px auto;
   padding: 20px;
   max-width: 600px;
-  background-color: #041F1A;
-  color: #FFFFFF;
+  background-color: $primary-dark;
+  color: $on-primary;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px $shadow;
 }
 
 .error-container h1 {
@@ -23,6 +21,7 @@ $secondary: #F2D7B6
   font-size: 1.2em;
 }
 
+
 .error-container img {
   max-width: 60%;
   height: auto;
@@ -30,7 +29,5 @@ $secondary: #F2D7B6
 }
 
 .error-container a {
-  color: #8CDF83FF;
+  color: $secondary;
 }
-
-/*# sourceMappingURL=error.css.map */

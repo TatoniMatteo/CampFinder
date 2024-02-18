@@ -1,7 +1,5 @@
-/*
-$primary: #86A697
-$secondary: #F2D7B6
- */
+@import "theme/variables";
+
 .places-list {
   display: flex;
   flex-wrap: wrap;
@@ -13,12 +11,12 @@ $secondary: #F2D7B6
 
 .place {
   width: 350px !important;
-  border: 1px solid #757575;
+  border: 1px solid $text-secondary;
   border-radius: 8px;
   margin-bottom: 20px;
   overflow: hidden;
-  background-color: #EDFDF7FF;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: $background;
+  box-shadow: 0 0 10px $shadow;
   transition: box-shadow 0.3s, transform 0.3s;
   cursor: pointer;
 }
@@ -28,22 +26,22 @@ $secondary: #F2D7B6
 }
 
 .place:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px $shadow-hover;
   transform: scale(1.02);
 }
 
 .place-info h3 {
   margin: 0;
-  color: #041F1A;
+  color: $primary-dark;
   text-align: start;
 }
 
 .place-info p {
-  color: #212121;
+  color: $text-primary;
 }
 
 .rating {
-  color: #034133FF;
+  color: $primary;
 }
 
 .rating .fas,
@@ -59,17 +57,17 @@ $secondary: #F2D7B6
 }
 
 .place-image .placeholder {
-  background-color: #034133FF;
+  background-color: $primary;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 250px;
-  color: #FFFFFF;
+  color: $on-primary;
 }
 
 .last-update {
-  color: #757575;
+  color: $text-secondary;
   font-size: 14px;
 }
 
@@ -85,7 +83,7 @@ $secondary: #F2D7B6
 }
 
 .category i {
-  color: #034133FF;
+  color: $primary;
 }
 
 /* RESPONSIVE LAYOUT */
@@ -95,5 +93,3 @@ $secondary: #F2D7B6
     align-items: center;
   }
 }
-
-/*# sourceMappingURL=place.css.map */

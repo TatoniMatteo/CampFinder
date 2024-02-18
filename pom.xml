@@ -55,10 +55,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+            <version>0.55</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>5.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.7.1</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId} </finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -72,7 +87,34 @@
                     </excludes>
                     <jvmArguments>
                         -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
+                        --add-opens java.base/sun.nio.ch=org.jruby.dist
                     </jvmArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>nl.geodienstencentrum.maven</groupId>
+                <artifactId>sass-maven-plugin</artifactId>
+                <version>3.7.2</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>update-stylesheets</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <resources>
+                        <resource>
+                            <source>
+                                <directory>src/main/resources/static/sass</directory>
+                                <includes>
+                                    <include>**/*.scss</include>
+                                </includes>
+                            </source>
+                            <destination>src/main/resources/static/css</destination>
+                        </resource>
+                    </resources>
                 </configuration>
             </plugin>
         </plugins>
@@ -92,7 +134,7 @@
                 </dependency>
             </dependencies>
             <build>
-                <defaultGoal>clean initialize spring-boot:run</defaultGoal>
+                <defaultGoal>clean initialize generate-resources spring-boot:run</defaultGoal>
             </build>
         </profile>
         <!--
